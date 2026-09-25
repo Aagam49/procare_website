@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Settings:
-    ADMIN_USERNAME: str = os.getenv("ADMIN_USERNAME", "admin")
-    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "admin")
+    ADMIN_USERNAME: str = os.getenv("ADMIN_USERNAME", "vishva")
+    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "vishva@912")
     
     SMTP_USERNAME: str | None = os.getenv("SMTP_USERNAME")
     SMTP_PASSWORD: str | None = os.getenv("SMTP_PASSWORD")
