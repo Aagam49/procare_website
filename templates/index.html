@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% set title = 'ProCare Physiotherapy | Physiotherapy Clinic in Naranpura Ahmedabad' %}
+{% set meta_description = 'Physiotherapy clinic in Naranpura, Ahmedabad for pain relief, rehabilitation, sports injury recovery, posture correction, and home visits by Dr Vishva Shah (MPT).' %}
+
+{% block content %}
+<section class="hero-pattern overflow-hidden">
+  <div class="section-shell grid items-center gap-8 py-12 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:py-20">
+    <div data-aos="fade-up">
+      <div class="hero-badge mb-4 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-700 sm:text-xs">
+        <span class="mr-2 text-amber-500">★</span>
+        {{ clinic.home_visit }} • Naranpura, Ahmedabad
+      </div>
+      <h1 class="max-w-xl text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
+        Personalized physiotherapy for pain relief, healing, and stronger movement.
+      </h1>
+      <p class="mt-4 max-w-lg text-base text-slate-600 sm:text-lg">
+        ProCare Physiotherapy helps people recover from pain, injury, and movement restrictions with targeted care from <strong>Dr Vishva Shah (MPT)</strong> in Naranpura, Ahmedabad.
+      </p>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <a href="/#home-form" class="procare-button primary-button px-6 py-4 text-sm sm:text-base">Book Appointment</a>
+        <a href="/services" class="procare-button secondary-button px-6 py-4 text-sm sm:text-base">Our Services</a>
+      </div>
+      <div class="mt-6 flex flex-wrap items-center gap-3 text-sm text-slate-600">
+        <span class="info-pill inline-flex items-center rounded-full px-3 py-1 font-medium text-emerald-700">⭐ 5.0 Google rating</span>
+        <span class="info-pill inline-flex items-center rounded-full px-3 py-1 font-medium text-slate-700">🏠 Home visit available</span>
+        <span class="inline-flex items-center gap-2"><span class="text-lg text-primary">📍</span> {{ clinic.service_area }}</span>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        {% for stat in stats %}
+          <div class="hero-stat-card p-4">
+            <div class="text-2xl font-extrabold text-primary">{{ stat.value }}</div>
+            <div class="mt-1 text-sm text-slate-600">{{ stat.label }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div data-aos="zoom-in" class="floating-image-card relative">
+      <div class="soft-card overflow-hidden p-3">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" alt="Physiotherapist at ProCare Physiotherapy clinic" class="h-[360px] w-full rounded-2xl object-cover sm:h-[450px] lg:h-[520px]" />
+      </div>
+      <div class="absolute -bottom-4 left-4 right-4 rounded-2xl border border-teal-200 bg-white p-4 shadow-soft sm:-bottom-6 sm:left-6 sm:right-auto">
+        <div class="flex items-center gap-3">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 text-lg text-primary">✓</div>
+          <div>
+            <div class="text-base font-bold text-slate-900 sm:text-lg">Personalized 1:1 care</div>
+            <div class="text-sm text-slate-600">Hands-on rehab, guided recovery, and long-term results</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-shell py-16 md:py-20">
+  <div class="mb-10 text-center" data-aos="fade-up">
+    <div class="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Our services</div>
+    <h2 class="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">Treatments designed for everyday recovery</h2>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-[1.15fr_1fr_1fr_1fr]">
+    <article class="service-card overflow-hidden p-6 md:col-span-2 xl:col-span-1" data-aos="fade-up">
+      <div class="service-icon mb-5">💪</div>
+      <div class="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Featured care</div>
+      <h3 class="mt-3 text-2xl font-bold text-slate-900">{{ services[0].name }}</h3>
+      <p class="mt-3 text-slate-600">{{ services[0].benefit }}</p>
+      <p class="mt-4 text-sm text-slate-500">Commonly helps with {{ services[0].conditions }}</p>
+      <a href="/#home-form" class="mt-6 inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark">Book Session →</a>
+    </article>
+
+    {% for service in services[1:4] %}
+      <article class="service-card p-6" data-aos="fade-up" data-aos-delay="{{ loop.index * 80 }}">
+        <div class="service-icon mb-5">{{ ['🩺','🏋️','⚡'][loop.index0] }}</div>
+        <h3 class="text-xl font-bold text-slate-900">{{ service.name }}</h3>
+        <p class="mt-3 text-sm text-slate-600">{{ service.benefit }}</p>
+        <p class="mt-4 text-sm text-slate-500">{{ service.conditions }}</p>
+      </article>
+    {% endfor %}
+  </div>
+
+  <div class="mt-10 text-center">
+    <a href="/services" class="procare-button secondary-button px-6 py-3.5">Explore all services</a>
+  </div>
+</section>
+
+<section class="bg-slate-900 py-16 text-white md:py-20">
+  <div class="section-shell">
+    <div class="mb-10 text-center" data-aos="fade-up">
+      <div class="text-sm font-semibold uppercase tracking-[0.25em] text-teal-300">The journey</div>
+      <h2 class="mt-3 text-3xl font-bold md:text-4xl">How recovery works at ProCare</h2>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {% for step in process %}
+        <div class="journey-card rounded-3xl border border-slate-700 bg-slate-800/60 p-6" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-teal-500/20 text-sm font-bold text-teal-300">{{ step.step }}</div>
+          <h3 class="text-xl font-bold">{{ step.title }}</h3>
+          <p class="mt-3 text-sm leading-6 text-slate-300">{{ step.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section-shell py-16 md:py-20">
+  <div class="mb-10 text-center" data-aos="fade-up">
+    <div class="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Google review highlights</div>
+    <h2 class="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">Patients trust ProCare for real progress</h2>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    {% for quote in testimonials %}
+      <article class="review-card p-6" data-aos="fade-up" data-aos-delay="{{ loop.index * 80 }}">
+        <div class="mb-4 text-amber-400">★★★★★</div>
+        <p class="text-base leading-7 text-slate-600">“{{ quote.story }}”</p>
+        <div class="mt-5 border-t border-slate-200 pt-4">
+          <div class="font-bold text-slate-900">{{ quote.name }}</div>
+          <div class="text-sm text-primary">{{ quote.highlight }}</div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="bg-teal-50/70 py-16 md:py-20">
+  <div class="section-shell">
+    <div class="mb-10 text-center" data-aos="fade-up">
+      <div class="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Why choose us</div>
+      <h2 class="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">Care that feels personal, professional, and practical</h2>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      <div class="feature-card p-6 text-center" data-aos="fade-up">
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-teal-100 text-2xl">🤝</div>
+        <h3 class="text-xl font-bold text-slate-900">Personalized care</h3>
+        <p class="mt-3 text-slate-600">Every plan is tailored to your symptoms, lifestyle, and recovery goals.</p>
+      </div>
+      <div class="feature-card p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-teal-100 text-2xl">🕒</div>
+        <h3 class="text-xl font-bold text-slate-900">Flexible timing</h3>
+        <p class="mt-3 text-slate-600">Morning, evening, and home visit options to fit your routine.</p>
+      </div>
+      <div class="feature-card p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-teal-100 text-2xl">👩‍⚕️</div>
+        <h3 class="text-xl font-bold text-slate-900">Direct doctor access</h3>
+        <p class="mt-3 text-slate-600">Receive clear guidance and hands-on clinical oversight from Dr Vishva Shah.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="home-form" class="section-shell py-16 md:py-20">
+  <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+    <div data-aos="fade-up">
+      <div class="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Book a consultation</div>
+      <h2 class="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">Start your recovery with a guided assessment.</h2>
+      <p class="mt-4 text-slate-600">Share your details and our team will guide you on the right treatment plan, appointment, and next steps.</p>
+      <ul class="mt-6 space-y-3 text-sm text-slate-600">
+        <li>• Quick follow-up from the clinic team</li>
+        <li>• Guidance for pain, mobility, and rehab concerns</li>
+        <li>• Private, secure consultation information</li>
+      </ul>
+      <p class="mt-6 text-xs text-slate-500">Patient information is kept private and confidential.</p>
+    </div>
+
+    <div class="soft-card p-6 md:p-8" data-aos="fade-up" data-aos-delay="100">
+      <form action="/submit-lead" method="post" x-data="{
+        step: 1,
+        goToStep2() {
+          const inputs = Array.from(this.$refs.step1.querySelectorAll('input'));
+          for (let input of inputs) {
+            if (!input.checkValidity()) {
+              input.reportValidity();
+              return;
+            }
+          }
+          this.step = 2;
+        }
+      }" class="space-y-5">
+        <div x-show="step === 1" x-transition x-ref="step1">
+          <div class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Step 1 • Personal details</div>
+          <div class="grid gap-5 md:grid-cols-2">
+            <label class="block text-sm font-medium text-slate-700 md:col-span-2">
+              Full name
+              <input type="text" name="full_name" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="Your full name" />
+            </label>
+            <label class="block text-sm font-medium text-slate-700">
+              Phone number
+              <input type="tel" name="phone" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="9662341549" />
+            </label>
+            <label class="block text-sm font-medium text-slate-700">
+              Email
+              <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="you@example.com" />
+            </label>
+            <label class="block text-sm font-medium text-slate-700 md:col-span-2">
+              Preferred date
+              <input type="date" name="preferred_date" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" />
+            </label>
+          </div>
+        </div>
+
+        <div x-show="step === 2" x-transition style="display: none;">
+          <div class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Step 2 • Service details</div>
+          <div class="space-y-5">
+            <label class="block text-sm font-medium text-slate-700">
+              Service needed
+              <select name="service" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20">
+                <option value="">Select a service</option>
+                {% for service in services %}
+                  <option value="{{ service.name }}">{{ service.name }}</option>
+                {% endfor %}
+              </select>
+            </label>
+            <label class="block text-sm font-medium text-slate-700">
+              How can we help?
+              <textarea name="symptoms" required rows="5" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="Tell us about your pain, injury, or movement restriction"></textarea>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex flex-col-reverse items-center justify-between gap-3 pt-2 sm:flex-row">
+          <button type="button" x-show="step === 2" @click="step = 1" class="procare-button secondary-button w-full px-4 py-3 text-sm sm:w-auto" style="display: none;">Back</button>
+          <div class="flex w-full gap-3 sm:ml-auto sm:w-auto">
+            <button type="button" x-show="step === 1" @click="goToStep2()" class="procare-button primary-button w-full px-5 py-3 text-sm sm:w-auto">Continue</button>
+            <button type="submit" x-show="step === 2" class="procare-button primary-button w-full px-5 py-3 text-sm sm:w-auto" style="display: none;">Submit request</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section-shell pb-16 md:pb-20">
+  <div class="soft-card bg-gradient-to-r from-teal-700 to-teal-900 px-6 py-10 text-center text-white md:px-10" data-aos="fade-up">
+    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-teal-200">Ready to begin?</p>
+    <h2 class="mt-3 text-3xl font-bold md:text-4xl">Book a physiotherapy evaluation in Naranpura.</h2>
+    <div class="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
+      <a href="/#home-form" class="procare-button bg-white px-5 py-3.5 text-sm font-semibold text-primary">Book Appointment</a>
+      <a href="tel:+919662341549" class="procare-button border border-white/40 bg-transparent px-5 py-3.5 text-sm font-semibold text-white">Call +91 96623 41549</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

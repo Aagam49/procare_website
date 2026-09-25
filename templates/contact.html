@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% set title = 'Contact ProCare Physiotherapy | Naranpura Ahmedabad' %}
+{% set meta_description = 'Contact ProCare Physiotherapy in Naranpura, Ahmedabad. Call +91 96623 41549, message on Instagram, or visit F-107 Celestia, Madhav Pride Road.' %}
+
+{% block content %}
+<section class="section-shell py-16 md:py-20">
+  <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+    <div data-aos="fade-up">
+      <div class="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Contact</div>
+      <h1 class="mt-4 text-4xl font-extrabold text-slate-900 md:text-5xl">Let’s talk about your recovery goals.</h1>
+      <div class="mt-8 space-y-5 text-slate-600">
+        <div>
+          <div class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Address</div>
+          <p class="mt-2 text-lg text-slate-700">{{ clinic.address }}</p>
+        </div>
+        <div>
+          <div class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Phone</div>
+          <p class="mt-2 text-lg"><a href="tel:+919662341549" class="text-slate-700 hover:text-primary">{{ clinic.phone_display or clinic.phone }}</a></p>
+        </div>
+        <div>
+          <div class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Instagram</div>
+          <p class="mt-2 text-lg"><a href="{{ clinic.instagram }}" target="_blank" rel="noreferrer" class="text-slate-700 hover:text-primary">@procarephysio.vishva</a></p>
+        </div>
+        <div>
+          <div class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Email</div>
+          <p class="mt-2 text-lg"><a href="mailto:{{ clinic.email }}" class="text-slate-700 hover:text-primary">{{ clinic.email }}</a></p>
+        </div>
+        <div>
+          <div class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Hours</div>
+          <p class="mt-2 text-lg text-slate-700">{{ clinic.hours }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="soft-card p-6 md:p-8" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="text-2xl font-bold text-slate-900">Send a message</h2>
+      <form action="/submit-contact" method="post" class="mt-6 space-y-5">
+        <div class="grid gap-5 md:grid-cols-2">
+          <label class="block text-sm font-medium text-slate-700 md:col-span-2">
+            Full name
+            <input type="text" name="full_name" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="Your name" />
+          </label>
+          <label class="block text-sm font-medium text-slate-700">
+            Email
+            <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="you@example.com" />
+          </label>
+          <label class="block text-sm font-medium text-slate-700">
+            Phone
+            <input type="tel" name="phone" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="9662341549" />
+          </label>
+          <label class="block text-sm font-medium text-slate-700 md:col-span-2">
+            Subject
+            <input type="text" name="subject" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="How can we help?" />
+          </label>
+          <label class="block text-sm font-medium text-slate-700 md:col-span-2">
+            Message
+            <textarea name="message" required rows="5" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20" placeholder="Tell us about your pain, injury, or goals"></textarea>
+          </label>
+        </div>
+        <button type="submit" class="procare-button primary-button mt-2 w-full px-5 py-3.5 text-sm sm:w-auto">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section-shell pb-18 md:pb-20">
+  <div class="soft-card overflow-hidden">
+    <iframe class="map-frame" src="https://www.google.com/maps?q=F-107%20Celestia%20Madhav%20Pride%20Road%20near%20Satya%202%20Shastrinagar%20Naranpura%20Ahmedabad%20380063&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to ProCare Physiotherapy"></iframe>
+  </div>
+</section>
+{% endblock %}

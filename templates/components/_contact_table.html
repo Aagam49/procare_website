@@ -1,0 +1,41 @@
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+  <div class="px-6 py-4 border-b border-slate-200 bg-slate-50/50 flex justify-between items-center">
+    <h2 class="text-lg font-bold text-slate-800">General Messages</h2>
+    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">{{ contacts|length }} Messages</span>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left text-sm text-slate-700">
+      <thead class="bg-slate-100/80 text-xs uppercase font-bold text-slate-500">
+        <tr>
+          <th class="px-6 py-3">Date</th>
+          <th class="px-6 py-3">Sender Name</th>
+          <th class="px-6 py-3">Contact Details</th>
+          <th class="px-6 py-3">Subject</th>
+          <th class="px-6 py-3">Message</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        {% for contact in contacts %}
+        <tr class="hover:bg-slate-50/80 transition">
+          <td class="px-6 py-4 whitespace-nowrap text-xs text-slate-400">
+            {{ contact.created_at.strftime('%b %d, %Y %I:%M %p') if contact.created_at else 'Recent' }}
+          </td>
+          <td class="px-6 py-4 font-semibold text-slate-900">{{ contact.full_name }}</td>
+          <td class="px-6 py-4">
+            <div class="text-xs text-slate-800">{{ contact.email }}</div>
+            {% if contact.phone %}
+            <div class="text-xs text-teal-700 font-medium">{{ contact.phone }}</div>
+            {% endif %}
+          </td>
+          <td class="px-6 py-4 font-medium text-slate-800">{{ contact.subject }}</td>
+          <td class="px-6 py-4 text-xs text-slate-600 max-w-sm" title="{{ contact.message }}">{{ contact.message }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="5" class="px-6 py-8 text-center text-slate-400 text-sm">No contact messages received yet.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

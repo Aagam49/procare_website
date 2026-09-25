@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section-shell py-8 max-w-6xl mx-auto">
+  <!-- Top Bar Component -->
+  {% include "components/_admin_topbar.html" %}
+
+  <!-- Stat Summary Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-gradient-to-br from-teal-700 to-teal-900 text-white p-6 rounded-2xl shadow-soft flex justify-between items-center">
+      <div>
+        <p class="text-xs uppercase font-medium tracking-wider text-teal-200">Total Appointment Requests</p>
+        <p class="text-4xl font-extrabold mt-1">{{ leads|length }}</p>
+      </div>
+      <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white text-2xl font-bold">
+        📋
+      </div>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex justify-between items-center">
+      <div>
+        <p class="text-xs uppercase font-medium tracking-wider text-slate-500">Contact Messages</p>
+        <p class="text-4xl font-extrabold text-slate-800 mt-1">{{ contacts|length }}</p>
+      </div>
+      <div class="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 text-2xl font-bold">
+        💬
+      </div>
+    </div>
+  </div>
+
+  <!-- Appointment Leads Table Component -->
+  {% include "components/_lead_table.html" %}
+
+  <!-- General Contact Messages Table Component -->
+  {% include "components/_contact_table.html" %}
+</div>
+{% endblock %}

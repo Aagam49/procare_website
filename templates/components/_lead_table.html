@@ -1,0 +1,41 @@
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-12 overflow-hidden">
+  <div class="px-6 py-4 border-b border-slate-200 bg-slate-50/50 flex justify-between items-center">
+    <h2 class="text-lg font-bold text-slate-800">Appointment Inquiries</h2>
+    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-teal-100 text-teal-800">{{ leads|length }} Submissions</span>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left text-sm text-slate-700">
+      <thead class="bg-slate-100/80 text-xs uppercase font-bold text-slate-500">
+        <tr>
+          <th class="px-6 py-3">Date Received</th>
+          <th class="px-6 py-3">Patient Name</th>
+          <th class="px-6 py-3">Phone</th>
+          <th class="px-6 py-3">Preferred Date</th>
+          <th class="px-6 py-3">Service</th>
+          <th class="px-6 py-3">Symptoms</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        {% for lead in leads %}
+        <tr class="hover:bg-slate-50/80 transition">
+          <td class="px-6 py-4 whitespace-nowrap text-xs text-slate-400">
+            {{ lead.created_at.strftime('%b %d, %Y %I:%M %p') if lead.created_at else 'Recent' }}
+          </td>
+          <td class="px-6 py-4 font-semibold text-slate-900">{{ lead.full_name }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <a href="tel:{{ lead.phone }}" class="text-teal-700 font-semibold hover:underline">{{ lead.phone }}</a>
+            <a href="https://wa.me/91{{ lead.phone|replace(' ', '')|replace('+', '') }}" target="_blank" class="ml-2 text-xs text-emerald-600 hover:underline">WhatsApp</a>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-amber-50 text-amber-800 text-xs rounded-md border border-amber-200 font-medium">{{ lead.preferred_date }}</span></td>
+          <td class="px-6 py-4 font-medium text-slate-800">{{ lead.service }}</td>
+          <td class="px-6 py-4 text-xs text-slate-600 max-w-xs truncate" title="{{ lead.symptoms }}">{{ lead.symptoms }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="6" class="px-6 py-8 text-center text-slate-400 text-sm">No appointment requests received yet.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

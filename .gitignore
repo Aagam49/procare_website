@@ -1,0 +1,21 @@
+# Environment & Secrets (12-Factor App)
+.env
+*.env
+
+# SQLite Database
+*.db
+procare.db
+
+# Python & Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="{{ meta_description or 'Physiotherapy clinic in Naranpura, Ahmedabad for pain relief, rehabilitation, sports injury recovery, posture correction, and home visits by Dr Vishva Shah (MPT).' }}" />
+    <meta name="keywords" content="physiotherapy clinic in Naranpura Ahmedabad, physiotherapist in Naranpura, rehabilitation clinic Ahmedabad, sports injury treatment, back pain treatment, home visit physiotherapy, Dr Vishva Shah" />
+    <meta property="og:title" content="{{ title or 'ProCare Physiotherapy | Physiotherapy Clinic in Naranpura Ahmedabad' }}" />
+    <meta property="og:description" content="{{ meta_description or 'Physiotherapy clinic in Naranpura, Ahmedabad for pain relief, rehabilitation, sports injury recovery, posture correction, and home visits by Dr Vishva Shah (MPT).' }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://www.procarephysiotherapy.in{{ request.url.path }}" />
+    <meta property="og:image" content="{{ url_for('static', path='images/procare-logo.jpg') }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ title or 'ProCare Physiotherapy' }}" />
+    <meta name="twitter:description" content="{{ meta_description or 'Physiotherapy clinic in Naranpura, Ahmedabad for pain relief, rehabilitation, sports injury recovery, posture correction, and home visits by Dr Vishva Shah (MPT).' }}" />
+    <link rel="canonical" href="https://www.procarephysiotherapy.in{{ request.url.path }}" />
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', path='images/procare-logo.jpg') }}" />
+    <title>{{ title or 'ProCare Physiotherapy | Physiotherapy Clinic in Naranpura Ahmedabad' }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0f766e',
+              'primary-dark': '#115e59',
+              accent: '#f59e0b',
+              warm: '#f8fafc'
+            },
+            boxShadow: {
+              soft: '0 18px 45px rgba(15, 118, 110, 0.08)'
+            }
+          }
+        }
+      }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}" />
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalClinic",
+          "@id": "https://www.procarephysiotherapy.in/#clinic",
+          "name": "ProCare Physiotherapy",
+          "description": "Community health and rehabilitation clinic in Naranpura, Ahmedabad offering physiotherapy, rehabilitation, sports injury treatment, posture correction, and home visits.",
+          "image": "{{ request.base_url }}static/images/procare-logo.jpg",
+          "telephone": "+91 9662341549",
+          "email": "procare.vishva@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "F-107 Celestia, Madhav Pride Road, near Satya 2, Shastrinagar, Naranpura",
+            "addressLocality": "Ahmedabad",
+            "addressRegion": "Gujarat",
+            "postalCode": "380063",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "23.0362",
+            "longitude": "72.5367"
+          },
+          "areaServed": "Naranpura, Ahmedabad, Gujarat",
+          "medicalSpecialty": "Physiotherapy",
+          "founder": {
+            "@id": "https://www.procarephysiotherapy.in/#physician"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "07:00",
+              "closes": "22:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Sunday",
+              "opens": "07:00",
+              "closes": "10:00"
+            }
+          ],
+          "sameAs": [
+            "https://www.instagram.com/procarephysio.vishva/"
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Physician",
+          "@id": "https://www.procarephysiotherapy.in/#physician",
+          "name": "Dr Vishva Shah",
+          "jobTitle": "MPT (Master of Physiotherapy)",
+          "medicalSpecialty": "Physiotherapy",
+          "worksFor": {
+            "@id": "https://www.procarephysiotherapy.in/#clinic"
+          },
+          "url": "https://www.procarephysiotherapy.in/about",
+          "telephone": "+91 9662341549",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "F-107 Celestia, Madhav Pride Road, near Satya 2, Shastrinagar, Naranpura",
+            "addressLocality": "Ahmedabad",
+            "addressRegion": "Gujarat",
+            "postalCode": "380063",
+            "addressCountry": "IN"
+          }
+        }
+      ]
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased" x-data="{ mobileMenu: false }" @keydown.escape.window="mobileMenu = false">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-teal-700 focus:px-4 focus:py-2.5 focus:font-semibold focus:text-white focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400">
+      Skip to main content
+    </a>
+
+    <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
+      <div class="section-shell flex items-center justify-between py-3 sm:py-4">
+        <a href="/" class="flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2" aria-label="ProCare Physiotherapy home">
+          <img src="{{ url_for('static', path='images/procare-logo.jpg') }}" alt="ProCare Physiotherapy logo" class="h-11 w-11 rounded-2xl object-cover shadow-soft" />
+          <div>
+            <div class="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-700 sm:text-xs">ProCare</div>
+            <div class="text-sm font-bold text-slate-800 sm:text-base">Physiotherapy</div>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 xl:gap-7 lg:flex" aria-label="Main Navigation">
+          <a href="/" class="rounded-md px-1 py-0.5 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 {% if request.url.path == '/' %}text-primary font-semibold{% endif %}">Home</a>
+          <a href="/about" class="rounded-md px-1 py-0.5 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 {% if request.url.path == '/about' %}text-primary font-semibold{% endif %}">About</a>
+          <a href="/services" class="rounded-md px-1 py-0.5 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 {% if request.url.path == '/services' %}text-primary font-semibold{% endif %}">Services</a>
+          <a href="/testimonials" class="rounded-md px-1 py-0.5 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 {% if request.url.path == '/testimonials' %}text-primary font-semibold{% endif %}">Reviews</a>
+          <a href="/contact" class="rounded-md px-1 py-0.5 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 {% if request.url.path == '/contact' %}text-primary font-semibold{% endif %}">Contact</a>
+        </nav>
+
+        <div class="hidden items-center gap-3 md:flex">
+          <a href="tel:+919662341549" class="rounded-md px-2 py-1 text-sm font-semibold text-slate-700 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600">{{ clinic.phone_display or clinic.phone }}</a>
+          <a href="/#home-form" class="procare-button primary-button px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm">Book Appointment</a>
+        </div>
+
+        <div class="flex items-center gap-2 md:hidden">
+          <a href="tel:+919662341549" aria-label="Call ProCare Physiotherapy" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-lg text-primary shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600">
+            <svg class="h-5 w-5 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </a>
+          <button class="rounded-lg border border-slate-200 bg-white p-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600" @click="mobileMenu = !mobileMenu" :aria-expanded="mobileMenu.toString()" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+            <svg class="h-5 w-5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M4 7h16M4 12h16M4 17h16" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" x-show="mobileMenu" x-transition class="border-t border-slate-200 bg-white md:hidden" style="display: none;">
+        <nav class="section-shell flex flex-col gap-2 py-4 text-sm font-medium text-slate-700" aria-label="Mobile Navigation">
+          <a href="/" @click="mobileMenu = false" class="block py-3 hover:text-primary">Home</a>
+          <a href="/about" @click="mobileMenu = false" class="block py-3 hover:text-primary">About</a>
+          <a href="/services" @click="mobileMenu = false" class="block py-3 hover:text-primary">Services</a>
+          <a href="/testimonials" @click="mobileMenu = false" class="block py-3 hover:text-primary">Reviews</a>
+          <a href="/contact" @click="mobileMenu = false" class="block py-3 hover:text-primary">Contact</a>
+          <a href="/#home-form" @click="mobileMenu = false" class="procare-button primary-button mt-2 block w-full px-4 py-3.5 text-center">Book Appointment</a>
+        </nav>
+      </div>
+    </header>
+
+    {% if request.query_params.get('success') %}
+      <div class="section-shell mt-6" role="alert">
+        <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 flex items-center gap-2 shadow-sm">
+          <svg class="h-5 w-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>{{ request.query_params.get('success') }}</span>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if request.query_params.get('error') %}
+      <div class="section-shell mt-6" role="alert">
+        <div class="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 flex items-center gap-2 shadow-sm">
+          <svg class="h-5 w-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>{{ request.query_params.get('error') }}</span>
+        </div>
+      </div>
+    {% endif %}
+
+    <main id="main-content" tabindex="-1" class="outline-none">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="mt-20 border-t border-slate-200 bg-slate-900 text-slate-200">
+      <div class="section-shell grid gap-8 py-12 md:grid-cols-4">
+        <div>
+          <div class="mb-3 text-xl font-bold text-white">ProCare Physiotherapy</div>
+          <p class="text-sm text-slate-300">Community health and rehabilitation services for pain relief, movement recovery, and long-term strength.</p>
+        </div>
+        <div>
+          <h3 class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Quick links</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="/about" class="hover:text-white">About</a></li>
+            <li><a href="/services" class="hover:text-white">Services</a></li>
+            <li><a href="/testimonials" class="hover:text-white">Reviews</a></li>
+            <li><a href="/contact" class="hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Clinic info</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>{{ clinic.address }}</li>
+            <li><a href="tel:+919662341549" class="hover:text-white">{{ clinic.phone_display or clinic.phone }}</a></li>
+            <li><a href="mailto:{{ clinic.email }}" class="hover:text-white">{{ clinic.email }}</a></li>
+            <li>{{ clinic.hours }}</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Social</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="{{ clinic.instagram }}" target="_blank" rel="noreferrer" class="hover:text-white">Instagram</a></li>
+            <li><a href="https://maps.google.com/?q=F-107+Celestia+Madhav+Pride+Road+Naranpura+Ahmedabad" target="_blank" rel="noreferrer" class="hover:text-white">Google Maps</a></li>
+            <li><a href="https://wa.me/919662341549" target="_blank" rel="noreferrer" class="hover:text-white">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 py-5 text-center text-xs text-slate-400">
+        © 2026 ProCare Physiotherapy • {{ clinic.location }}
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/919662341549?text=Hello%20ProCare%20Physiotherapy%2C%20I%20want%20to%20book%20an%20appointment."
+      class="whatsapp-float"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chat on WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20.52 3.48A11.78 11.78 0 0 0 12.1 1.5C6.12 1.5 1.27 6.34 1.27 12.3c0 1.94.53 3.82 1.54 5.48L1.5 22.5l4.86-1.3c1.58.9 3.39 1.37 5.25 1.37h.01c6 0 10.84-4.84 10.84-10.82 0-2.9-1.13-5.63-3.18-7.67Zm-8.42 16.7c-1.5 0-2.98-.42-4.28-1.2l-.3-.18-2.88.77 .78-2.8-.2-.29A8.5 8.5 0 0 1 3.8 12.3a8.82 8.82 0 0 1 8.86-8.86c2.36 0 4.58.92 6.25 2.59a8.75 8.75 0 0 1 2.58 6.27c0 4.7-3.98 8.52-8.89 8.52ZM16.79 14.3c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.15.24-.6.79-.74.95-.13.16-.27.18-.5.06-.24-.12-1.01-.37-1.93-1.18-.71-.63-1.2-1.41-1.34-1.65-.14-.24-.02-.37.11-.49.11-.11.24-.27.36-.41.12-.13.16-.23.24-.39.08-.16.04-.29-.02-.41-.06-.12-.54-1.3-.74-1.77-.19-.45-.39-.39-.54-.39h-.46c-.16 0-.41.06-.62.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.94 2.35.12.16 1.61 2.47 3.9 3.47.54.23.97.37 1.3.47.54.17 1.03.15 1.42.09.43-.07 1.44-.59 1.64-1.17.2-.58.2-1.08.14-1.18-.07-.1-.22-.16-.46-.28Z" fill="currentColor"/>
+      </svg>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+        duration: 700,
+        easing: 'ease-out-cubic',
+        offset: 30
+      });
+    </script>
+  </body>
+</html>
