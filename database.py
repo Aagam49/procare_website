@@ -4,6 +4,8 @@ from pathlib import Path
 from sqlalchemy import Column, DateTime, Integer, String, Text, create_engine, func
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+from core.logger import logger
+
 BASE_DIR = Path(__file__).resolve().parent
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'procare.db'}")
 
@@ -18,7 +20,6 @@ else:
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
-
 
 
 class LeadSubmission(Base):
@@ -56,5 +57,8 @@ def get_db():
 
 
 def init_db() -> None:
-    Base.metadata.create_all(bind=engine)
-
+    try:
+        Base.metadata.create_all(bind=engine)
+        logger.info("Database tables verified/created successfully.")
+    except Exception as exc:
+        logger.error(f"Failed to initialize database tables: {exc}", exc_info=True)
